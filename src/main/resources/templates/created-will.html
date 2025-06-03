@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>유언장 생성 완료</title>
+    <link rel="stylesheet" th:href="@{/css/created.css}">
+    <meta charset="UTF-8" />
+</head>
+<body>
+<h2>유언장 생성 완료</h2>
+
+<p><strong>🔒 암호화된 전자봉투 데이터 🔒</strong></p>
+<pre th:text="${envelop.encryptedData}"></pre>
+
+<!-- 현재 envelop 데이터를 숨겨진 필드로 모두 전달 -->
+<form th:action="@{/verify}" method="post" th:object="${envelop}">
+    <input type="hidden" th:field="*{encryptedAesKey}" />
+    <input type="hidden" th:field="*{encryptedData}" />
+    <input type="hidden" th:field="*{signatureLength}" />
+    <input type="hidden" th:field="*{publicKeyLength}" />
+    <button type="submit">작성한 유언장 검증하러 가기</button>
+</form>
+
+<a href="/create">새 유언장 작성하기</a>
+
+</body>
+</html>

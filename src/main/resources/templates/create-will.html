@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>유언장 작성 페이지(전자봉투 생성)</title>
+    <link rel="stylesheet" th:href="@{/css/create.css}">
+</head>
+<body>
+<h2>유언장 작성하기</h2>
+
+<form method="post">
+    <div class="button-group">
+        <button type="submit" th:formaction="@{/create/generateSenderKeys}">🔑 발신자 키 쌍 생성</button>
+        <button type="submit" th:formaction="@{/create/generateReceiverKeys}">🔑 수신자 키 쌍 생성</button>
+    </div>
+</form>
+
+<form method="post">
+    <textarea name="plainText" rows="7" placeholder="텍스트를 입력하세요..."></textarea><br/>
+    <div class="button-group">
+        <button type="submit" th:formaction="@{/create}">전자봉투 생성</button>
+        <button type="submit" th:formaction="@{/createFake}">위조된 전자봉투 생성</button>
+    </div>
+</form>
+
+<p th:text="${message}"></p>
+</body>
+</html>

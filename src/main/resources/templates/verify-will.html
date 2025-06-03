@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>유언장 검증 결과</title>
+    <link rel="stylesheet" th:href="@{/css/verify.css}">
+    <meta charset="UTF-8" />
+</head>
+<body>
+<h2>유언장 검증 결과</h2>
+
+<p><strong>검증 결과: </strong></p>
+<p th:text="${message}"></p>
+
+<div th:if="${plainText != null}">
+    <h3>유언장 원문 내용</h3>
+    <pre th:text="${plainText}">원문 없음</pre>
+</div>
+<a href="/create">새 유언장 작성하기</a>
+</body>
+</html>
